@@ -1,7 +1,5 @@
-import EquipmentModel from "./EquipmentModel";
-
-/** Класс для описания системного блока */
-export default class ComputerModel extends EquipmentModel {
+/** Класс для описания полей формы компьютера */
+export default class ComputerFormModel {
   /** Модель процессора */
   cpu: string;
   /** Модель графического процессора */
@@ -11,8 +9,7 @@ export default class ComputerModel extends EquipmentModel {
   /** Объем хранения в Гб */
   storageSize: number;
 
-  constructor(obj?: Partial<ComputerModel>) {
-    super(obj);
+  constructor(obj?: Partial<ComputerFormModel>) {
     Object.assign(this, obj);
   }
 }

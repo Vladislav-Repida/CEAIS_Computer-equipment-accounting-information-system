@@ -48,7 +48,7 @@ const close = () => emit("close");
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(87, 91, 139, 0.25);
     z-index: 100;
     cursor: pointer;
   }
@@ -56,8 +56,8 @@ const close = () => emit("close");
   &__content {
     position: absolute;
     left: 50%;
-    top: 20%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 
     max-width: 600px;
     width: 100%;

@@ -1,18 +1,17 @@
+import { EnumTypeOfEquipment } from "../enums";
+
 /** Модель для описания компьютерной техники */
-export default class ComputerEquipmentModel {
+export default class EquipmentModel {
   /** Идентификатор */
   id: string;
   /** Тип техники */
-  type: string;
+  type: EnumTypeOfEquipment = EnumTypeOfEquipment.Computer;
   /** Наименование */
   name: string;
   /** Описание */
   desc?: string;
 
-  /** Стоимость */
-  price: number;
-
-  constructor(obj?: Partial<ComputerEquipmentModel>) {
+  constructor(obj?: Partial<EquipmentModel>) {
     Object.assign(this, obj);
   }
 }

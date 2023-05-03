@@ -15,5 +15,6 @@
   border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
 }
 </style>

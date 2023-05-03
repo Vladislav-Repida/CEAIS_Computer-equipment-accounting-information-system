@@ -1,1 +1,2 @@
-export { AddTechnic } from "./add-technique";
+export { AddTechnic } from "./add-equipment";
+export { ListEquipment } from "./list-equipment";

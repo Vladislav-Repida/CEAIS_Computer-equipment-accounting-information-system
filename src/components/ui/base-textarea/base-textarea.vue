@@ -1,40 +1,47 @@
 <template>
-  <input
-    class="base-input"
-    :name="name"
-    :type="type || 'text'"
+  <textarea
+    class="base-textarea"
+    v-model="value"
     :placeholder="placeholder"
-    v-model="model"
+    :style="style"
   />
 </template>
+
 <script lang="ts" setup>
 import { computed } from "vue";
 
-const emit = defineEmits(["update:modelValue"]);
-
-type BaseInputType = "text" | "password";
+const emit = defineEmits<{
+  (eventName: "update:modelValue", value: string): void;
+}>();
 
 const props = defineProps<{
-  type?: BaseInputType;
-  isBorder?: boolean;
+  resize?: boolean;
   placeholder?: string;
-  name?: string;
-
+  width?: string;
+  height?: string;
   modelValue: string;
 }>();
 
-const model = computed({
+const value = computed({
   get() {
     return props.modelValue;
   },
-
   set(value) {
-    return emit("update:modelValue", value);
+    emit("update:modelValue", value);
   },
 });
+
+const style = computed(() => {
+  return {
+    resize: props.resize ? "both" : "none",
+    width: props.width,
+    height: props.height,
+  };
+});
 </script>
+
 <style lang="less" scoped>
-.base-input {
+.base-textarea {
   display: block;
   padding: 12px 16px;
   border: none;
