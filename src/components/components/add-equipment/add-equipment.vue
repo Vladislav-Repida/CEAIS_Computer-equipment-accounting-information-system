@@ -87,7 +87,7 @@ const CreateEquipment = () => {
   } else if (isMonitor.value) {
     return new MonitorModel({
       id: uuid(),
-      type: EnumTypeOfEquipment.Computer,
+      type: EnumTypeOfEquipment.Monitor,
       name: equipmentData.value.name,
       desc: equipmentData.value.desc,
       resolution: monitorData.value.resolution,

@@ -7,12 +7,17 @@
       <base-input v-model="gpu" placeholder="Название GPU" />
     </base-label>
     <base-label title="Объем ОЗУ">
-      <base-input v-model="ramSize" placeholder="Введите объем ОЗУ" />
+      <base-input
+        v-model="ramSize"
+        placeholder="Введите объем ОЗУ"
+        type="number"
+      />
     </base-label>
     <base-label title="Объем накопителя">
       <base-input
         v-model="storageSize"
         placeholder="Введите объем накопителя"
+        type="number"
       />
     </base-label>
   </div>

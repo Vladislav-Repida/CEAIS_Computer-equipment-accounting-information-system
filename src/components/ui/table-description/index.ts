@@ -1,0 +1,1 @@
+export { TableDescription } from "./ui";

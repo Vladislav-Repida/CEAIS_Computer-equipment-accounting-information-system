@@ -10,7 +10,10 @@
         height="120px"
       />
     </base-label>
-    <base-label title="Выберите тип компьютерной техники">
+    <base-label
+      title="Выберите тип компьютерной техники"
+      v-if="!isDisabledSelectType"
+    >
       <base-select :options="options" v-model="option" />
     </base-label>
   </form-wrap>
@@ -31,6 +34,8 @@ const emit = defineEmits<{
 const props = defineProps<{
   /** v-model для формы компьютерной техники */
   modelValue: BaseEquipmentFormModel;
+
+  isDisabledSelectType?: boolean;
 }>();
 
 const options = [

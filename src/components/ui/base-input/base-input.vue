@@ -12,7 +12,7 @@ import { computed } from "vue";
 
 const emit = defineEmits(["update:modelValue"]);
 
-type BaseInputType = "text" | "password";
+type BaseInputType = "text" | "password" | "number";
 
 const props = defineProps<{
   type?: BaseInputType;
