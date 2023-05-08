@@ -1,34 +1,29 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
 import { Equipment } from "../mappers/types";
-import { LocalStorageService } from "../services";
+import { LcReactiveArray } from "../services/localStorageReactive";
 
 export const useAppStore = defineStore("app", () => {
-  const lc = new LocalStorageService<Array<Equipment>>("equipments");
+  /** Где храним технику */
+  const equipments = LcReactiveArray<Array<Equipment>>("equipments");
 
-  const equipments = ref(lc.GetAll() || new Array<Equipment>());
+  /** Добавляем технику */
+  const AddEquipment = (value: Equipment) =>
+    (equipments.value = [value, ...equipments.value]);
 
-  const UpdateLocalStorage = () => {
-    lc.WriteAll(equipments.value);
-  };
-
-  const AddEquipment = (value: Equipment) => {
-    equipments.value = [value, ...equipments.value];
-    UpdateLocalStorage();
-  };
-
+  /** Обновляем технику */
   const EditEquipment = (value: Equipment) => {
+    // Находим по id
     const find = equipments.value.find((eqp) => eqp.id === value.id);
+    // Обновялем новыми значениями
     Object.assign(find, value);
-    UpdateLocalStorage();
   };
 
-  const RemoveEquipment = (equipmentId: string) => {
-    equipments.value = equipments.value.filter(
+  /** Удаляем технику */
+  const RemoveEquipment = (equipmentId: string) =>
+    // Фильтруем по id
+    (equipments.value = equipments.value.filter(
       (equipment) => equipment.id !== equipmentId
-    );
-    UpdateLocalStorage();
-  };
+    ));
 
   return {
     equipments,

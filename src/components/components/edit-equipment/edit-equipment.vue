@@ -1,10 +1,10 @@
 <template>
   <div class="edit-equipment">
-    <base-button @click="Open">Редактировать</base-button>
+    <base-button @click="OpenModal">Редактировать</base-button>
     <base-modal
       :active="visibleModal"
       :title="`Редактировать ${equipment.name}`"
-      @close="Close"
+      @close="CloseModal"
     >
       <base-equipment-form
         v-model="baseEquipmentModel"
@@ -43,17 +43,21 @@ import { ComputerForm } from "../computer-form";
 import { MonitorForm } from "../monitor-form";
 
 const props = defineProps<{
+  /** Техника для редактирования */
   equipment: EquipmentModel;
 }>();
 
+/** Видимость модалки */
 const visibleModal = ref(false);
-const Close = () => (visibleModal.value = false);
-const Open = () => (visibleModal.value = true);
+/** Закрыть модалку */
+const CloseModal = () => (visibleModal.value = false);
+/** Открыть модаку */
+const OpenModal = () => (visibleModal.value = true);
 
 const appStore = useAppStore();
-
 const { EditEquipment } = appStore;
 
+/** Моделька для базовой формы */
 const baseEquipmentModel = computed({
   get() {
     return new BaseEquipmentFormModel({
@@ -63,10 +67,12 @@ const baseEquipmentModel = computed({
     });
   },
   set(value) {
+    // Редактируем технику в хранилище
     EditEquipment(new EquipmentModel({ ...props.equipment, ...value }));
   },
 });
 
+/** Моделька для формы монитора */
 const monitorData = computed({
   get() {
     const monitor = props.equipment as MonitorModel;
@@ -81,6 +87,7 @@ const monitorData = computed({
   },
 });
 
+/** Моделька для формы компьютера */
 const computerData = computed({
   get() {
     const computer = props.equipment as ComputerModel;

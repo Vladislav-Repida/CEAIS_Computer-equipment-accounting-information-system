@@ -8,7 +8,7 @@ export default class ComputerModel extends EquipmentModel {
   gpu: string;
   /** Объем оперативной памяти в Гб */
   ramSize: number;
-  /** Объем хранения в Гб */
+  /** Объем хранения в Тб */
   storageSize: number;
 
   constructor(obj?: Partial<ComputerModel>) {

@@ -6,14 +6,12 @@
       </h1>
       <AddTechnic />
     </template>
-    <ListEquipment />
     <ViewEquipments />
   </base-layout>
 </template>
 
 <script setup lang="ts">
-import { AddTechnic } from "./components/components";
-import { ListEquipment } from "./components/components";
+import { AddTechnic } from "./components/components/add-equipment";
 import { ViewEquipments } from "./components/components/view-equipments/ui";
 import { BaseLayout } from "./components/layout";
 </script>

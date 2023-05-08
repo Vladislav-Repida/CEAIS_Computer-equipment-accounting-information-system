@@ -86,19 +86,6 @@ const desc = computed({
     );
   },
 });
-
-/** Значение поля типа компьютерной техники */
-const type = computed({
-  get() {
-    return props.modelValue.type;
-  },
-  set(value) {
-    emit(
-      "update:modelValue",
-      new EquipmentModel({ ...props.modelValue, type: value })
-    );
-  },
-});
 </script>
 
 <style lang="less" scoped>
